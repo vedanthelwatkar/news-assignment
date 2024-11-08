@@ -1,0 +1,42 @@
+<div class="story-container">
+  <div class="header-wrapper">
+    <button class="view-switch-hidden">
+      Switch to {{ isTable ? "Card View" : "Table View" }}
+    </button>
+    <app-header></app-header>
+    <button (click)="switchContent()" class="view-switch-btn">
+      Switch to {{ isTable ? "Card View" : "Table View" }}
+    </button>
+  </div>
+
+  <div class="content-container">
+    <app-story-card
+      *ngIf="!isTable"
+      [stories]="stories"
+      [totalEntries]="totalEntries"
+      [currentPage]="currentPage"
+      [pageSize]="pageSize"
+      [searchTerm]="searchTerm"
+      [isLoading]="isLoading"
+    ></app-story-card>
+    <app-story-table
+      *ngIf="isTable"
+      [stories]="stories"
+      [totalEntries]="totalEntries"
+      [currentPage]="currentPage"
+      [pageSize]="pageSize"
+      [searchTerm]="searchTerm"
+      [isLoading]="isLoading"
+    ></app-story-table>
+  </div>
+
+  <div class="footer">
+    <app-pagination
+      [currentPage]="currentPage"
+      [totalItems]="totalEntries"
+      [itemsPerPage]="pageSize"
+      (pageChange)="onPageChange($event)"
+      (searchTermChange)="onSearchChange($event)"
+    ></app-pagination>
+  </div>
+</div>

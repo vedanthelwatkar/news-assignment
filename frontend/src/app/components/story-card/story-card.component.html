@@ -1,0 +1,57 @@
+<ng-container *ngIf="isLoading; else content">
+  <div class="loader-container" aria-live="polite">
+    <div class="loader"></div>
+    <p>Loading stories...</p>
+  </div>
+</ng-container>
+
+<ng-template #content>
+  <ng-container *ngIf="stories.length > 0; else noData">
+    <div class="story-cards">
+      <a
+        *ngFor="
+          let story of stories
+            | paginate
+              : {
+                  itemsPerPage: pageSize,
+                  currentPage: currentPage,
+                  totalItems: totalEntries
+                }
+        "
+        [href]="story.url"
+        target="_blank"
+        rel="noreferrer nofollow"
+        class="story-card"
+      >
+        <div class="card-body">
+          <h2 class="card-title">{{ story.title }}</h2>
+          <div class="link-btn">
+            <span class="card-link">Read More</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </div>
+  </ng-container>
+
+  <ng-template #noData>
+    <div class="no-data" aria-live="polite">
+      <p>
+        No stories found. Please try a different search or check back later.
+      </p>
+    </div>
+  </ng-template>
+</ng-template>

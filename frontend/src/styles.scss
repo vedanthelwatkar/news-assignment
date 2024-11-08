@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background-color: black;
+  font-family: "Montserrat", "Roboto";
+}
+
+.ngx-pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin-bottom: 0 !important;
+}
+
+.ngx-pagination li {
+  margin: 0 0.25rem;
+}
+
+.ngx-pagination a,
+.ngx-pagination .current {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  color: #ffffff;
+  background-color: #b4b4b4;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.ngx-pagination a:hover {
+  background-color: #4a0080;
+}
+
+.ngx-pagination .current {
+  background-color: #9900ff;
+  font-weight: bold;
+}
+
+.ngx-pagination .disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.small-screen {
+  display: flex !important;
+  align-items: center;
+  color: white;
+}

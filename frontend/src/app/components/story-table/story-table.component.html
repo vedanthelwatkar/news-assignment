@@ -1,0 +1,37 @@
+<div class="table-container">
+  <table class="stories-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let story of stories
+            | paginate
+              : {
+                  itemsPerPage: pageSize,
+                  currentPage: currentPage,
+                  totalItems: totalEntries
+                };
+          let i = index
+        "
+        [class.odd]="i % 2 !== 0"
+      >
+        <td>{{ story.id }}</td>
+        <td>{{ story.title }}</td>
+        <td>
+          <a [href]="story.url" target="_blank" rel="noopener noreferrer">
+            {{ story.url }}
+          </a>
+        </td>
+      </tr>
+      <tr *ngIf="!stories.length" class="no-data">
+        <td colspan="3">Loading...</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
