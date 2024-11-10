@@ -44,3 +44,9 @@
 .view-switch-btn:active {
   transform: scale(0.98);
 }
+
+@media (max-width:768px) {
+  .view-switch-hidden{
+    display:none;
+  }
+}
