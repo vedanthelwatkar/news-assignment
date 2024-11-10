@@ -76,7 +76,7 @@
 @media (max-width: 768px) {
   .table-container {
     max-height: 60vh;
-    overflow: scroll;
+    overflow: auto;
   }
   .stories-table {
     font-size: 0.85rem;
